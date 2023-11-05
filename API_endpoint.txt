@@ -1,0 +1,7 @@
+`API endpoints:\n
+
+/createTimeStampFile\n
+to create a timestamp file,\n\n
+
+/getAllTextFiles\n
+to retrieve all the timestamp files`

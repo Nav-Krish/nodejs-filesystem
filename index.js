@@ -5,6 +5,18 @@ const moment = require('moment')
 
 const app = express();
 const PORT = 8000
+var API_endpoint={
+    "/createTimeStampFile":"to create a timestamp file",
+    "/getAllTextFiles":"to retrieve all the timestamp files"
+}
+
+
+
+app.get('/', (req,res)=>{
+    fs.readFile('./API_endpoint.txt','utf-8', (err,data)=>{
+        res.send(API_endpoint)
+    })
+})
 
 // API Endpoint to create a TimeStamp file with current timestamp inside a folder
 // "/createTimestampFile" is the endpoint name
@@ -36,10 +48,10 @@ app.get('/getAllTextFiles', (req, res) => {
             var timeStampFiles = [];
             files.map((txt) => {
                 //display the contents of the text files and their content timestamps
-                var temp=fs.readFileSync(`./TimeStampFiles/${txt}`,'utf-8')
+                var temp = fs.readFileSync(`./TimeStampFiles/${txt}`, 'utf-8')
                 timeStampFiles.push(`${txt}  ===>  ${temp}`)
             });
-            res.send({timeStampFiles});
+            res.send({ timeStampFiles });
         }
     })
 })
